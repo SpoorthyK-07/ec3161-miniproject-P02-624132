@@ -1,0 +1,68 @@
+# P02 – The 15 Puzzle: Experimental Results
+
+## Experiment 1: IDA* with Manhattan Distance
+
+For the additional test state:
+
+- Solution length: 20 moves
+- Expanded nodes: 1809
+
+## Experiment 2: IDA* with Manhattan Distance + Linear Conflict
+
+- Solution length: 20 moves
+- Expanded nodes: 999
+- Reduction in expanded nodes compared with Manhattan: 44.8%
+
+## Experiment 3: IDA* with Additive Pattern Database (PDB)
+
+- Solution length: 20 moves
+- Expanded nodes: 867
+- PDB construction time: 0.54 seconds
+- Number of patterns: 5
+- Tiles per pattern: 3
+- Total stored abstract states: 218,400
+
+## Performance Comparison: Additional Test State
+
+| Heuristic | Solution Moves | Expanded Nodes |
+|---|---:|---:|
+| Manhattan | 20 | 1809 |
+| Manhattan + Linear Conflict | 20 | 999 |
+| Additive PDB | 20 | 867 |
+
+## Final Experiments
+
+### Easy Test
+
+| Heuristic | Moves | Expanded Nodes | Time (s) |
+|---|---:|---:|---:|
+| Manhattan | 20 | 31 | 0.0009 |
+| Linear Conflict | 20 | 31 | 0.0039 |
+| PDB | 20 | 30 | 0.0011 |
+
+### Medium Test
+
+| Heuristic | Moves | Expanded Nodes | Time (s) |
+|---|---:|---:|---:|
+| Manhattan | 30 | 16550 | 0.1876 |
+| Linear Conflict | 30 | 9527 | 0.4996 |
+| PDB | 30 | 3365 | 0.1008 |
+
+### Hard Test
+
+| Heuristic | Moves | Expanded Nodes | Time (s) |
+|---|---:|---:|---:|
+| Manhattan | 26 | 79 | 0.0012 |
+| Linear Conflict | 26 | 45 | 0.0038 |
+| PDB | 26 | 26 | 0.0006 |
+
+## Observations
+
+1. Linear Conflict reduced the number of expanded nodes compared with Manhattan Distance.
+2. The additive PDB heuristic expanded the fewest nodes in all three final test settings.
+3. All three heuristics found solutions with equal solution lengths for each tested state.
+4. PDB construction took only 0.54 seconds for the five patterns.
+
+## Conclusion
+
+The experimental results show that improving the heuristic function can significantly reduce the search effort of IDA*. Manhattan Distance + Linear Conflict performed better than Manhattan Distance, while the additive Pattern Database achieved the lowest number of expanded nodes in the tested cases. The PDB approach therefore demonstrated the best search efficiency in these experiments.
